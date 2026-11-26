@@ -23,6 +23,21 @@ Set `REACT_APP_API_BASE_URL` before starting the development server to use a dif
 npm run build
 ```
 
+## GitHub Pages demo
+
+The GitHub Actions workflow deploys the site to
+`https://ysmathapathi.github.io/scholarsetu-idt/` when changes are pushed to
+`main`. In the repository settings, set **Pages → Build and deployment → Source**
+to **GitHub Actions**. The first deployment can also be started from the
+workflow's **Run workflow** button.
+
+The frontend uses hash-based routes so direct navigation works on GitHub Pages.
+To connect a deployed API, add a repository Actions variable named
+`REACT_APP_API_BASE_URL` with the API's HTTPS base URL (for example,
+`https://api.example.com/api`) before triggering a deployment. Without an API,
+the public interface can be demonstrated, but data, authentication, and
+account-only features will not work.
+
 ## API integration
 
 Requests are centralized in `src/services/api.js`. The UI expects a backend to provide the endpoints described in the ScholarSetu frontend specification, including `/auth/me`, `/auth/login`, `/auth/register`, `/auth/logout`, `/auth/forgot-password`, `/scholarships`, `/users/profile`, `/eligibility/results`, `/saved`, `/applications`, `/notifications`, `/contact`, and the `/admin/*` endpoints. Exact response shapes should be agreed with the backend; list responses may be arrays or objects containing `items` or `results`.
